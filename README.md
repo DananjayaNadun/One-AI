@@ -1,5 +1,7 @@
 # One AI ✦ 
 
+https://oneaiforyou.pythonanywhere.com/
+
 One AI is a web application built to provide a streamlined, high-performance interface for interacting with state-of-the-art AI models. Featuring a modern "Deep Space" aesthetic with frosted glass UI elements, it focuses on both aesthetics and functionality.
 
 ## 🚀 Features
