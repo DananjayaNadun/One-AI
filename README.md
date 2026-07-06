@@ -11,10 +11,5 @@ One AI is a web application built to provide a streamlined, high-performance int
 * **Time Awareness:** Custom system injection ensures the AI is always aware of the current date and time.
 * **Responsive Design:** Deep-theme layout with orbital background animations.
 
-## 🛠️ Tech Stack
-* **Frontend:** HTML5, CSS3 (Flexbox/Grid), JavaScript (ES6+)
-* **Backend:** Python, Flask
-* **Database:** SQLite3
-* **AI Integration:** OpenRouter API (Gemma-3-27b-it)
-* **Markdown Rendering:** Marked.js
+
 
