@@ -18,3 +18,19 @@ One AI is a web application built to provide a streamlined, high-performance int
 * **AI Integration:** OpenRouter API (Gemma-3-27b-it)
 * **Markdown Rendering:** Marked.js
 
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Dananjaya Nadun**
+GitHub: (https://github.com/DananjayaNadun)
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
