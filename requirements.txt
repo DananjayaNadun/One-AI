@@ -1,5 +1,16 @@
-flask
-flask-cors
-python-dotenv
-google-genai
-openai
+# Pinned to a set verified together on a clean install.
+#
+# openai must be >=1.55.3: earlier versions pass a 'proxies' argument that
+# httpx removed in 0.28, so pip resolving a fresh httpx breaks the client with
+# "Client.__init__() got an unexpected keyword argument 'proxies'".
+flask==3.0.3
+flask-cors==4.0.1
+python-dotenv==1.0.1
+openai==3.0.0
+httpx>=0.28.1
+gunicorn==22.0.0
+
+# Attachment handling
+pypdf==4.3.1
+python-docx==1.1.2
+Pillow==10.4.0
