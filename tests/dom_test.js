@@ -402,6 +402,16 @@ setTimeout(async () => {
         String(strip.querySelectorAll('.node-pip').length));
   check('strip names the model', /qwen3-coder/.test(strip.textContent), strip.textContent);
   check('strip omits :free suffix', !/:free/.test(strip.textContent), strip.textContent);
+  // 'openrouter/free' would otherwise render as a meaningless bare "free".
+  const auto = win.renderMarkdown ? null : null;
+  const probe = doc.createElement('div');
+  probe.className = 'message-block ai-block';
+  probe.append(Object.assign(doc.createElement('div'), { className: 'ai-content' }));
+  win.addConsensusStrip(probe, ['a','b','c'], 30, false, { mode: 'panel', model: 'openrouter/free' });
+  check('auto-router labelled clearly',
+        /auto/.test(probe.querySelector('.consensus').textContent)
+        && !/\bfree\b/.test(probe.querySelector('.consensus').textContent),
+        probe.querySelector('.consensus').textContent);
 
   // ---------- code block chrome ----------
   const realParse = win.marked.parse;
