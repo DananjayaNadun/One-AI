@@ -1,1 +1,58 @@
+name: tests
 
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  backend:
+    name: Backend (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.9", "3.11", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # No API key is needed: the model layer is stubbed in every suite.
+      - name: Run test suites
+        env:
+          OPENROUTER_KEY: sk-or-v1-ci-placeholder
+          SECRET_KEY: ci-secret
+        run: |
+          python -m tests.test_smoke
+          python -m tests.test_attachments
+          python -m tests.test_editing
+          python -m tests.test_modes
+          python -m tests.test_free_only
+
+  frontend:
+    name: Frontend (jsdom)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install jsdom
+        run: npm install jsdom --no-fund --no-audit
+
+      - name: Run DOM tests
+        run: node tests/dom_test.js
