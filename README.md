@@ -5,29 +5,6 @@ then has an aggregator model reconcile them into a single answer.
 
 ---
 
-## ⚠️ Read this first: rotate your keys
-
-The `env.txt` you shared contained live credentials. Treat all of them as
-compromised and rotate them now:
-
-| Key | Where to rotate |
-|---|---|
-| `OPENROUTER_KEY` | https://openrouter.ai/settings/keys — delete the old key |
-| `GEMINI_KEY` | https://aistudio.google.com/apikey |
-| `DEEPSEEK_KEY` | https://platform.deepseek.com/api_keys |
-| `CEREBRAS` | https://cloud.cerebras.ai — regenerate |
-| `GOOGLE_CLIENT_SECRET` | Google Cloud Console → APIs & Services → Credentials |
-| `SECRET_KEY` | `python -c "import secrets; print(secrets.token_hex(32))"` |
-
-A leaked OpenRouter key can be drained against your credit balance by anyone
-who finds it. This project only needs `OPENROUTER_KEY` — the others were unused
-by the code, so drop them rather than carrying them forward.
-
-Note the filename: it must be `.env`, not `env.txt`. `load_dotenv()` never read
-your `env.txt`, which is part of why nothing was loading.
-
----
-
 ## Setup
 
 **New to this? Open `START-HERE.md` instead** — it walks through installing
