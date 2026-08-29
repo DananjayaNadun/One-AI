@@ -1994,12 +1994,17 @@ function addConsensusStrip(block, nodes, seconds, degraded, extra) {
 
     strip.append(label);
 
+    // The auto-router's id is 'openrouter/free', which renders as a bare "free"
+    // and tells you nothing. Name it for what it is instead.
     if (info.model) {
+        const label = info.model === 'openrouter/free'
+            ? 'auto'
+            : String(info.model).split('/').pop().replace(':free', '');
         const sepM = document.createElement('span');
         sepM.className = 'sep';
         sepM.textContent = '/';
         const name = document.createElement('span');
-        name.textContent = String(info.model).split('/').pop().replace(':free', '');
+        name.textContent = label;
         strip.append(sepM, name);
     }
 
